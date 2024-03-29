@@ -31,5 +31,7 @@ jobs:
           which node || true
           whereis node || true
           # node-gyp configure --node-dir=$(which node)
+          echo "node-gyp build"
+          node-gyp build --node-dir=$(which node)
           echo "node-gyp rebuild"
           node-gyp rebuild --node-dir=$(which node)
