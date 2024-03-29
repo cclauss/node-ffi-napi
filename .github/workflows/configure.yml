@@ -30,5 +30,6 @@ jobs:
           npm install -g node-gyp
           which node || true
           whereis node || true
-          node-gyp configure
-          node-gyp rebuild
+          node-gyp configure --node-dir=$(which node)
+          echo "node-gyp rebuild"
+          node-gyp rebuild --node-dir=$(which node)
