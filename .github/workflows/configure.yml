@@ -28,5 +28,7 @@ jobs:
         shell: bash
         run: |
           npm install -g node-gyp
+          which node || true
+          whereis node || true
           node-gyp configure
           node-gyp rebuild
