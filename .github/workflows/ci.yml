@@ -22,16 +22,16 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]  # , latest] Node.js >= 21 fails
         os: [ubuntu-latest, macos-latest]
+        python-version: [3.12]
         include:  # Node.js > 16.x fails on Windows
           - node-version: 16.x
             os: windows-latest
+            python-version: 3.11
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:  # Python >= 3.12 fails on Node.js 16 because of distlib fixed in node-gyp v10.0
-          python-version: 3.11
+          python-version: ${{ matrix.python-version }}
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
