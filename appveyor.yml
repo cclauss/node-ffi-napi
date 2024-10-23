@@ -21,6 +21,7 @@ platform:
 install:
   - python -V
   - set PYTHON=python
+  - python -m pip install setuptools
   - ps: Install-Product node $env:nodejs_version $env:platform
   - node -p process.arch
   - node -p process.version
