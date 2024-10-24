@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
+        node-version: [22, 20, 18, 16, 14, 12]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -17,11 +18,11 @@ jobs:
           python-version: 3.9
       - uses: actions/setup-node@v2
         with:
-          node-version: '22'
+          node-version: ${{ matrix.node-version }}
       - name: install dependencies and test
         shell: bash
         run: |
-          npm install
+          npm ci
           npm test
       - name: build with node-gyp
         shell: bash
