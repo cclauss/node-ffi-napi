@@ -22,7 +22,7 @@ jobs:
       - name: install dependencies and test
         shell: bash
         run: |
-          npm ci
+          npm install
           npm test
       - name: build with node-gyp
         shell: bash
